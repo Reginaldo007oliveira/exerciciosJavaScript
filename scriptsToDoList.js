@@ -16,8 +16,13 @@ newListForm.addEventListener('submit', function(e){
 
 })
 
+function createList(name){
+    return { id: Date.now().toString(), name:name}
+}
+
 // capitura os dados do js e joga para o html
 function render(){
+    clearElement(listContainer)
     lists.forEach(function(list){
         const item = document.createElement('li')
         item.classList.add('item')
@@ -25,8 +30,11 @@ function render(){
         listContainer.appendChild(item)
     })
 }
-function createList(name){
-    return { id: Date.now().toString(), name:name}
+
+function clearElement(element){
+    while(element.firstChild){
+        element.removeChild(element.firstChild)
+    }
 }
 
 render()
